@@ -1,4 +1,4 @@
-const PassportJWT = require('passport.jwt'),
+const PassportJWT = require('passport-jwt'),
     ExtractJWT = PassportJWT.ExtractJwt,
     Strategy = PassportJWT.Strategy,
     config = require('./index.js'),
@@ -11,7 +11,7 @@ module.exports = (passport) => {
         secretOrKey: config.secret,
         jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken()
     };
-    
+
     passport.use(new Strategy(parameters, (payload, done) => {
         User.findOne({ id: payload.id }, (error, user) => {
             if (error) return done(error, alse);
@@ -20,5 +20,3 @@ module.exports = (passport) => {
         });
     }));
 }
-
-

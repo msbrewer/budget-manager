@@ -11,7 +11,7 @@ module.exports = (mongoose, config) => {
 
     database.on('connected', () => console.log('Connected to BudgetManager database'));
 
-    database.on('disconnected', () +> console.log('Disconnected from BudegetManager database'));
+    database.on('disconnected', () => console.log('Disconnected from BudegetManager database'));
 
     process.on('SIGINT', () => {
         database.close(() => {
